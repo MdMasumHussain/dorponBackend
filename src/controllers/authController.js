@@ -12,8 +12,8 @@ exports.registerUser = async (req, res) => {
     const token = generateToken(user.id);
     res.cookie("token", token, {
         httpOnly: true,
-        secure: false, 
-        sameSite: "lax",
+        secure: true, 
+        sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000, 
       });
     res.status(201).json({ 
@@ -31,8 +31,8 @@ exports.loginUser = async (req, res) => {
         // Set token in cookie
     res.cookie("token", token, {
         httpOnly: true,
-        secure: false, // Set to true in production
-        sameSite: "lax",
+        secure: true, // Set to true in production
+        sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie valid for 7 days
       });
         res.json({ 
