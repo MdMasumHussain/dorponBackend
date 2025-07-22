@@ -1,4 +1,4 @@
-const Carousel = require("../models/carousel")
+const Carousel = require("../models/Carousel")
 
 
 exports.getCarousel = async (req, res)=>{
