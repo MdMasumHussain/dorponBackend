@@ -9,7 +9,10 @@ const app = express();
 connectDB();
 dotenv.config();
 const port = process.env.PORT || 4001;
-app.use(cors())
+app.use(cors({
+  origin: process.env.FRONTEND_URI,
+  credentials: true // important if you are using cookies or auth tokens
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
