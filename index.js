@@ -9,12 +9,7 @@ const app = express();
 connectDB();
 dotenv.config();
 const port = process.env.PORT || 4001;
-app.use(cors(
-  {
-    origin: process.env.FRONTEND_URI, // Next.js frontend port
-    credentials: true,
-  }
-))
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
