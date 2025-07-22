@@ -10,7 +10,7 @@ connectDB();
 dotenv.config();
 const port = process.env.PORT || 4001;
 app.use(cors({
-  origin: process.env.FRONTEND_URI,
+  origin: "https://dorpon-frontend-ngf9-git-main-md-masum-hossain-s-projects.vercel.app",
   credentials: true // important if you are using cookies or auth tokens
 }));
 app.use(express.json());
