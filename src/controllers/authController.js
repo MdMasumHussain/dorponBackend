@@ -30,6 +30,7 @@ exports.loginUser = async (req, res) => {
         const token = generateToken(user.id, user.isAdmin);
         console.log("cookies are : ", token);
         // Set token in cookie
+    res.setHeader("Cache-Control", "no-store");
     res.cookie("token", token, {
         httpOnly: true,
         secure: true, // Set to true in production
