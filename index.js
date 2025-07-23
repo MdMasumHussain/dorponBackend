@@ -9,18 +9,18 @@ const app = express();
 connectDB();
 dotenv.config();
 const port = process.env.PORT || 4001;
-const allowedOrigins = [
-  "https://dorpon-frontend-ngf9.vercel.app",
-  "https://dorpon-frontend-ngf9-pv4m3kdnz-md-masum-hossain-s-projects.vercel.app",
-  "https://dorpon-frontend-ngf9-git-main-md-masum-hossain-s-projects.vercel.app"
-];
+// const allowedOrigins = [
+//   "https://dorpon-frontend-ngf9.vercel.app",
+//   "https://dorpon-frontend-ngf9-pv4m3kdnz-md-masum-hossain-s-projects.vercel.app",
+//   "https://dorpon-frontend-ngf9-git-main-md-masum-hossain-s-projects.vercel.app"
+// ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || /vercel\.app$/.test(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error("Not allowed by CORS: " + origin));
     }
   },
   credentials: true,
