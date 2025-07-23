@@ -28,6 +28,7 @@ exports.loginUser = async (req, res) => {
     const user = await User.findOne({ email });
     if (user && (await user.matchPassword(password))) {
         const token = generateToken(user.id, user.isAdmin);
+        console.log("cookies are : ", token);
         // Set token in cookie
     res.cookie("token", token, {
         httpOnly: true,
