@@ -12,6 +12,7 @@ const port = process.env.PORT || 4001;
 app.use(cors(
   {
     origin: process.env.FRONTEND_URI, // Next.js frontend port
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   }
 ))
