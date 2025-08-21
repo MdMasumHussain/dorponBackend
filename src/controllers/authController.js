@@ -17,8 +17,7 @@ exports.registerUser = async (req, res) => {
         maxAge: 7 * 24 * 60 * 60 * 1000, 
       });
     res.status(201).json({ 
-        _id: user.id, name: user.name, email: user.email, 
-        token: token 
+        _id: user.id, name: user.name, email: user.email
     });
 }
 
@@ -36,8 +35,7 @@ exports.loginUser = async (req, res) => {
         maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie valid for 7 days
       });
         res.json({ 
-            _id: user.id, name: user.name, email: user.email, 
-            token: token 
+            _id: user.id, name: user.name, email: user.email
         });
     } else {
         res.status(401).json({ message: "Invalid email or password" });
@@ -60,8 +58,8 @@ exports.getUserProfile = [protect, async (req, res) => {
 exports.logoutUser = async (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
+        secure: false, // Set to true in production
+        sameSite: "lax",
         expires: new Date(0),
       });
     res.status(200).json({ message: "Logged out successfully" });
