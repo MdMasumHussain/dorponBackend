@@ -14,6 +14,7 @@ exports.registerUser = async (req, res) => {
         httpOnly: true,
         secure: true, 
         sameSite: "none",
+        domain: "https://dorponbackend.onrender.com",
         maxAge: 7 * 24 * 60 * 60 * 1000, 
       });
     res.status(201).json({ 
@@ -32,6 +33,7 @@ exports.loginUser = async (req, res) => {
         httpOnly: true,
         secure: true, // Set to true in production
         sameSite: "none",
+        domain: "https://dorponbackend.onrender.com",
         maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie valid for 7 days
       });
         res.json({ 
