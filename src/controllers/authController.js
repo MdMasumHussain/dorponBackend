@@ -35,8 +35,7 @@ exports.loginUser = async (req, res) => {
         maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie valid for 7 days
       });
         res.json({ 
-            _id: user.id, name: user.name, email: user.email, 
-            token: token 
+            _id: user.id, name: user.name, email: user.email
         });
     } else {
         res.status(401).json({ message: "Invalid email or password" });
