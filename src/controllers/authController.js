@@ -14,6 +14,7 @@ exports.registerUser = async (req, res) => {
         httpOnly: true,
         secure: true, 
         sameSite: "none",
+        domain: "dorpon-frontend.vercel.app",
         path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000, 
       });
@@ -33,6 +34,7 @@ exports.loginUser = async (req, res) => {
         httpOnly: true,
         secure: true, // Set to true in production
         sameSite: "none",
+        domain: "dorpon-frontend.vercel.app",
         path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie valid for 7 days
       });
@@ -60,8 +62,10 @@ exports.getUserProfile = [protect, async (req, res) => {
 exports.logoutUser = async (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
-        secure: false, // Set to true in production
-        sameSite: "lax",
+        secure: true, // Set to true in production
+        sameSite: "none",
+        domain: "dorpon-frontend.vercel.app",
+        path: "/",
         expires: new Date(0),
       });
     res.status(200).json({ message: "Logged out successfully" });
