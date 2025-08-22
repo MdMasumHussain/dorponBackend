@@ -12,8 +12,8 @@ const port = process.env.PORT || 4001;
 // app.set("trust proxy", 1);
 app.use(cors(
   {
-    origin: process.env.FRONTEND_URI, // Next.js frontend port
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: process.env.FRONTEND_URI, 
+    methods: ['GET,HEAD,PUT,PATCH,POST,DELETE'],
     credentials: true,
   }
 ))
