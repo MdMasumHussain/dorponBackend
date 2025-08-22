@@ -12,8 +12,8 @@ exports.registerUser = async (req, res) => {
     const token = generateToken(user.id);
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true, // Always true in production for cross-site access
-        sameSite: "none", // Always "none" in production for cross-site access
+        secure: true, // Always true in production
+        sameSite: "Lax", // Use Lax for production
         path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
@@ -31,8 +31,8 @@ exports.loginUser = async (req, res) => {
         // Set token in cookie
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true, // Always true in production for cross-site access
-        sameSite: "none", // Always "none" in production for cross-site access
+        secure: true, // Always true in production
+        sameSite: "Lax", // Use Lax for production
         path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie valid for 7 days
       });
@@ -60,8 +60,8 @@ exports.getUserProfile = [protect, async (req, res) => {
 exports.logoutUser = async (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
-        secure: true, // Always true in production for cross-site access
-        sameSite: "none", // Always "none" in production for cross-site access
+        secure: true, // Always true in production
+        sameSite: "Lax", // Use Lax for production
         path: "/",
         expires: new Date(0),
       });
