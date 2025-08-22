@@ -13,7 +13,7 @@ exports.registerUser = async (req, res) => {
     res.cookie("token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: process.env.NODE_ENV === 'production' ? "none" : "lax",
+        sameSite: process.env.NODE_ENV === 'production' ? "Lax" : "lax",
         path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
@@ -32,7 +32,7 @@ exports.loginUser = async (req, res) => {
     res.cookie("token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production', // Set to true in production
-        sameSite: process.env.NODE_ENV === 'production' ? "none" : "lax",
+        sameSite: process.env.NODE_ENV === 'production' ? "Lax" : "lax",
         path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie valid for 7 days
       });
@@ -61,7 +61,7 @@ exports.logoutUser = async (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production', // Set to true in production
-        sameSite: process.env.NODE_ENV === 'production' ? "none" : "lax",
+        sameSite: process.env.NODE_ENV === 'production' ? "Lax" : "lax",
         path: "/",
         expires: new Date(0),
       });
