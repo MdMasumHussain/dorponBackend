@@ -12,11 +12,10 @@ exports.registerUser = async (req, res) => {
     const token = generateToken(user.id);
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true, 
-        sameSite: "none",
-        domain: "dorpon-frontend.vercel.app",
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? "none" : "lax",
         path: "/",
-        maxAge: 7 * 24 * 60 * 60 * 1000, 
+        maxAge: 7 * 24 * 60 * 60 * 1000,
       });
     res.status(201).json({ 
         _id: user.id, name: user.name, email: user.email
@@ -32,9 +31,8 @@ exports.loginUser = async (req, res) => {
         // Set token in cookie
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true, // Set to true in production
-        sameSite: "none",
-        domain: "dorpon-frontend.vercel.app",
+        secure: process.env.NODE_ENV === 'production', // Set to true in production
+        sameSite: process.env.NODE_ENV === 'production' ? "none" : "lax",
         path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie valid for 7 days
       });
@@ -62,9 +60,8 @@ exports.getUserProfile = [protect, async (req, res) => {
 exports.logoutUser = async (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
-        secure: true, // Set to true in production
-        sameSite: "none",
-        domain: "dorpon-frontend.vercel.app",
+        secure: process.env.NODE_ENV === 'production', // Set to true in production
+        sameSite: process.env.NODE_ENV === 'production' ? "none" : "lax",
         path: "/",
         expires: new Date(0),
       });
