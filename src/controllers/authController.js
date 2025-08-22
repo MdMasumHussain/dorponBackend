@@ -58,7 +58,7 @@ exports.getUserProfile = [protect, async (req, res) => {
 exports.logoutUser = async (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
-        secure: false, // Set to true in production
+        secure: true, // Set to true in production
         sameSite: "lax",
         expires: new Date(0),
       });
